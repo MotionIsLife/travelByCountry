@@ -10,6 +10,6 @@ import vo.City;
 public class ServiceConfig {
     @Bean
     public City getCity() {
-        return new City();
+        return new City(1);
     }
 }
