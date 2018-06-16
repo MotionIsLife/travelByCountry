@@ -21,7 +21,7 @@ public class Country {
     }
 
     public String toString() {
-        return "CountryRest{" +
+        return "CountryController{" +
             "id=" + id +
             ", countryName='" + countryName + '\'' +
             '}';

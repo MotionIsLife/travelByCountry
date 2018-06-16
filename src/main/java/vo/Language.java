@@ -21,7 +21,7 @@ public class Language {
     }
 
     public String toString() {
-        return "LanguageRest{" +
+        return "LanguageController{" +
             "id=" + id +
             ", languageName='" + languageName + '\'' +
             '}';
