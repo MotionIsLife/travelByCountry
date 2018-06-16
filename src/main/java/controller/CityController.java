@@ -15,6 +15,7 @@ public class CityController {
 
     @GetMapping(path = "/{id}")
     public @ResponseBody City getCity(@PathVariable Long id) {
+        System.out.println("getCity " + id);
         return new City(id);
     }
 
