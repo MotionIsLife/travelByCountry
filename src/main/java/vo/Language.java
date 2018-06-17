@@ -4,6 +4,10 @@ public class Language {
     private long id;
     private String languageName;
 
+    public Language(Long id) {
+        this.id = id;
+    }
+
     public long getId() {
         return id;
     }
