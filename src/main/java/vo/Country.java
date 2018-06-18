@@ -1,12 +1,27 @@
 package vo;
 
+import javax.persistence.*;
 import java.util.Set;
 
+@Entity
+@Table(name = "country")
 public class Country {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @Column(name = "countryName")
     private String countryName;
-    private Set<String> cities;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "country")
+    private Set<City> cities;
+
+    @Column(name = "language")
     private Language language;
+
+    public Country() {
+    }
 
     public Country(Long id) {
         this.id = id;
@@ -28,11 +43,11 @@ public class Country {
         this.countryName = countryName;
     }
 
-    public Set<String> getCities() {
+    public Set<City> getCities() {
         return cities;
     }
 
-    public void setCities(Set<String> cities) {
+    public void setCities(Set<City> cities) {
         this.cities = cities;
     }
 
