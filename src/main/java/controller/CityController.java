@@ -1,12 +1,17 @@
 package controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
+import service.CityService;
 import vo.City;
-
 
 @RestController
 @RequestMapping(value = "/city")
 public class CityController {
+
+    @Autowired
+    private CityService cityService;
 
     @PostMapping
     public void addCity(@RequestBody City city){

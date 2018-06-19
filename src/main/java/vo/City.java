@@ -12,8 +12,8 @@ public class City {
     @Column(name = "cityName")
     private String cityName;
 
-    @Column(name = "country")
-    @JoinColumn(name = "country_id")
+    /*@Column(name = "country")*/
+    @JoinColumn(name = "country_id", nullable = false)
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Country country;
 

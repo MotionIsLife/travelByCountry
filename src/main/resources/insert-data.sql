@@ -1,0 +1,2 @@
+INSERT INTO COUNTRY (COUNTRY_NAME, LANGUAGE)
+  VALUES ('Russia', 'russian');

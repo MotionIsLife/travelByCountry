@@ -13,6 +13,9 @@ public class Language {
     @Column(name = "languageName")
     private String languageName;
 
+    @OneToOne(optional = false, mappedBy="language")
+    private Country country;
+
     public Language() {
     }
 
