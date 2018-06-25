@@ -1,14 +1,27 @@
 package controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import service.CountryService;
 import vo.Country;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/country")
 public class CountryController {
+
+    @Autowired
+    private CountryService countryService;
+
     @PostMapping
     public void addCountry(@RequestBody Country country){
         System.out.println("adding country " + country);
+    }
+
+    @GetMapping
+    public @ResponseBody List<Country> getFindAll() {
+        return countryService.findAll();
     }
 
     @GetMapping(path = "/{id}")

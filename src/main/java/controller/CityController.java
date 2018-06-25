@@ -1,10 +1,11 @@
 package controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 import service.CityService;
 import vo.City;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/city")
@@ -16,6 +17,12 @@ public class CityController {
     @PostMapping
     public void addCity(@RequestBody City city){
         System.out.println("adding city " + city);
+    }
+
+    @GetMapping
+    public @ResponseBody List<City> findAll() {
+        System.out.println("find all");
+        return cityService.findAll();
     }
 
     @GetMapping(path = "/{id}")
