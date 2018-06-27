@@ -17,11 +17,17 @@ public class CountryController {
     @PostMapping
     public void addCountry(@RequestBody Country country){
         System.out.println("adding country " + country);
+        countryService.save(country);
     }
 
     @GetMapping
     public @ResponseBody List<Country> getFindAll() {
-        return countryService.findAll();
+        try {
+            return countryService.findAll();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return null;
     }
 
     @GetMapping(path = "/{id}")

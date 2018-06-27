@@ -17,8 +17,8 @@ public class Country {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "country")
     private Set<City> cities;
 
-    @OneToOne(targetEntity = Language.class, optional = false)
-    @JoinColumn(name="language_id", unique = true, nullable = false, updatable = false)
+    @OneToOne(mappedBy = "country", targetEntity = Language.class, optional = true, cascade=CascadeType.ALL)
+    /*@JoinColumn(name="language_id", unique = true, nullable = false, updatable = false)*/
     private Language language;
 
     public Country() {

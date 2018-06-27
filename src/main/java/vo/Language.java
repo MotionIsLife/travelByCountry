@@ -10,10 +10,11 @@ public class Language {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "languageName")
+    @Column(name = "language_name")
     private String languageName;
 
-    @OneToOne(optional = false, mappedBy="language")
+    @OneToOne(fetch=FetchType.LAZY/*, optional = false, mappedBy="language"*/)
+    @JoinColumn(name="country_id")
     private Country country;
 
     public Language() {
