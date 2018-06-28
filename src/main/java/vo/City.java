@@ -13,8 +13,8 @@ public class City {
     private String cityName;
 
     /*@Column(name = "country")*/
-    @JoinColumn(name = "country_id", nullable = false)
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name = "country_id", referencedColumnName = "country_id")
+    @ManyToOne(/*fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST}*/optional = false)
     private Country country;
 
     public City() {

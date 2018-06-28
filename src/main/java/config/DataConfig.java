@@ -39,8 +39,8 @@ public class DataConfig {
         EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
         EmbeddedDatabase db = builder
                 .setType(EmbeddedDatabaseType.H2)
-                .addScript("create-table.sql")
-                .addScript("insert-data.sql")
+                /*.addScript("create-table.sql")
+                .addScript("insert-data.sql")*/
                 .build();
         return db;
     }

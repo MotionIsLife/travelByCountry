@@ -14,11 +14,11 @@ public class Country {
     @Column(name = "country_name")
     private String countryName;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "country")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "country", targetEntity = City.class)
     private Set<City> cities;
 
-    @OneToOne(mappedBy = "country", targetEntity = Language.class, optional = true, cascade=CascadeType.ALL)
-    /*@JoinColumn(name="language_id", unique = true, nullable = false, updatable = false)*/
+    @OneToOne(optional = true)
+    @JoinColumn(name="language_id")
     private Language language;
 
     public Country() {

@@ -13,7 +13,7 @@ public class Language {
     @Column(name = "language_name")
     private String languageName;
 
-    @OneToOne(fetch=FetchType.LAZY/*, optional = false, mappedBy="language"*/)
+    @OneToOne(fetch=FetchType.LAZY, optional = false, mappedBy="language", cascade = CascadeType.ALL, targetEntity = Country.class)
     @JoinColumn(name="country_id")
     private Country country;
 
