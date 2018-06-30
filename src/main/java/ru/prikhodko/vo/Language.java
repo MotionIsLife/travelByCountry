@@ -1,4 +1,4 @@
-package vo;
+package ru.prikhodko.vo;
 
 import javax.persistence.*;
 
@@ -13,8 +13,9 @@ public class Language {
     @Column(name = "language_name")
     private String languageName;
 
-    @OneToOne(fetch=FetchType.LAZY, optional = false, mappedBy="language", cascade = CascadeType.ALL, targetEntity = Country.class)
-    @JoinColumn(name="country_id")
+    /*@OneToOne(fetch=FetchType.LAZY, optional = false, mappedBy="language", cascade = CascadeType.ALL, targetEntity = Country.class)
+    @JoinColumn(name="country_id", referencedColumnName = "id")*/
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "language", cascade = CascadeType.ALL)
     private Country country;
 
     public Language() {

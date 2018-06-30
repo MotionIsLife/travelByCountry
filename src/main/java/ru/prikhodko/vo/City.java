@@ -1,4 +1,4 @@
-package vo;
+package ru.prikhodko.vo;
 
 import javax.persistence.*;
 
@@ -13,8 +13,8 @@ public class City {
     private String cityName;
 
     /*@Column(name = "country")*/
-    @JoinColumn(name = "country_id", referencedColumnName = "country_id")
-    @ManyToOne(/*fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST}*/optional = false)
+    @JoinColumn(name = "country_id")
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Country country;
 
     public City() {

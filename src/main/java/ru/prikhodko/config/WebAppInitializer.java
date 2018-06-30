@@ -1,4 +1,4 @@
-package config;
+package ru.prikhodko.config;
 
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;

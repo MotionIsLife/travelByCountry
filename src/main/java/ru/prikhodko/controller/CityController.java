@@ -1,9 +1,9 @@
-package controller;
+package ru.prikhodko.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import service.CityService;
-import vo.City;
+import ru.prikhodko.service.CityService;
+import ru.prikhodko.vo.City;
 
 import java.util.List;
 

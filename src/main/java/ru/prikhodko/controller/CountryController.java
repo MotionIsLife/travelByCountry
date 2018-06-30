@@ -1,9 +1,9 @@
-package controller;
+package ru.prikhodko.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import service.CountryService;
-import vo.Country;
+import ru.prikhodko.service.CountryService;
+import ru.prikhodko.vo.Country;
 
 import java.util.List;
 

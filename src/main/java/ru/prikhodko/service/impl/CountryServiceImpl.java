@@ -1,10 +1,10 @@
-package service.impl;
+package ru.prikhodko.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.CountryRepository;
-import service.CountryService;
-import vo.Country;
+import ru.prikhodko.repository.CountryRepository;
+import ru.prikhodko.service.CountryService;
+import ru.prikhodko.vo.Country;
 
 import java.util.List;
 

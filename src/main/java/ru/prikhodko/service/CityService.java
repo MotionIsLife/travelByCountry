@@ -1,6 +1,6 @@
-package service;
+package ru.prikhodko.service;
 
-import vo.City;
+import ru.prikhodko.vo.City;
 
 import java.util.List;
 

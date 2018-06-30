@@ -1,10 +1,10 @@
-package service.impl;
+package ru.prikhodko.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.CityRepository;
-import service.CityService;
-import vo.City;
+import ru.prikhodko.repository.CityRepository;
+import ru.prikhodko.service.CityService;
+import ru.prikhodko.vo.City;
 
 import java.util.List;
 

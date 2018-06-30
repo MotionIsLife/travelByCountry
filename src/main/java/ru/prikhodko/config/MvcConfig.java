@@ -1,4 +1,4 @@
-package config;
+package ru.prikhodko.config;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -12,7 +12,7 @@ import java.util.List;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan(basePackages = {"controller", "service", "repository"})
+@ComponentScan(basePackages = {"ru.prikhodko.controller", "ru.prikhodko.service", "ru.prikhodko.repository"})
 public class MvcConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {

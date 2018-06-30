@@ -1,4 +1,4 @@
-package vo;
+package ru.prikhodko.vo;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -14,10 +14,10 @@ public class Country {
     @Column(name = "country_name")
     private String countryName;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "country", targetEntity = City.class)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "country", cascade = CascadeType.ALL)
     private Set<City> cities;
 
-    @OneToOne(optional = true)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="language_id")
     private Language language;
 

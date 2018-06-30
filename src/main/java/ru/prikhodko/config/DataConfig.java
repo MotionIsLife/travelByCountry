@@ -1,7 +1,5 @@
-package config;
+package ru.prikhodko.config;
 
-import org.hibernate.ejb.HibernatePersistence;
-import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -23,8 +21,8 @@ import java.util.Properties;
 @Configuration
 @EnableTransactionManagement
 @PropertySource("classpath:app.properties")
-@ComponentScan({"config", "vo"})
-@EnableJpaRepositories("repository")
+@ComponentScan("ru.prikhodko")
+@EnableJpaRepositories("ru.prikhodko.repository")
 public class DataConfig {
 
     private static final String PROP_HIBERNATE_DIALECT = "hibernate.dialect";
@@ -50,7 +48,7 @@ public class DataConfig {
         LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
         emf.setDataSource(dataSource);
         emf.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-        emf.setPackagesToScan("vo");
+        emf.setPackagesToScan("ru");
         emf.setJpaProperties(getHibernateProperties());
         return emf;
     }

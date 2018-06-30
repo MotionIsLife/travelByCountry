@@ -1,7 +1,7 @@
-package controller;
+package ru.prikhodko.controller;
 
 import org.springframework.web.bind.annotation.*;
-import vo.Language;
+import ru.prikhodko.vo.Language;
 
 @RestController
 @RequestMapping(value = "/language")
