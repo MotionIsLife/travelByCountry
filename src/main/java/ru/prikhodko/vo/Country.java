@@ -9,9 +9,10 @@ public class Country {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", length = 6, nullable = false)
     private long id;
 
-    @Column(name = "country_name")
+    @Column(name = "country_name", unique = true)
     private String countryName;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "country", cascade = CascadeType.ALL)
@@ -24,8 +25,8 @@ public class Country {
     public Country() {
     }
 
-    public Country(Long id) {
-        this.id = id;
+    public Country(String countryName) {
+        this.countryName = countryName;
     }
 
     public long getId() {

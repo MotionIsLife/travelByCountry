@@ -15,7 +15,7 @@ public class LanguageServiceImpl implements LanguageService {
     private LanguageRepository repository;
 
     public void save(Language language) {
-        repository.save(language);
+        repository.saveAndFlush(language);
     }
 
     public void delete(Language language) {

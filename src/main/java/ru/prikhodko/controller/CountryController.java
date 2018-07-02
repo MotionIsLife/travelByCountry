@@ -32,7 +32,7 @@ public class CountryController {
 
     @GetMapping(path = "/{id}")
     public @ResponseBody Country getCountry(@PathVariable Long id) {
-        return new Country(id);
+        return new Country();
     }
 
     @DeleteMapping(path = "/{id}")

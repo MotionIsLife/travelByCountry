@@ -2,6 +2,7 @@ package ru.prikhodko.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.prikhodko.repository.CountryRepository;
 import ru.prikhodko.service.CountryService;
 import ru.prikhodko.vo.Country;
@@ -14,8 +15,10 @@ public class CountryServiceImpl implements CountryService {
     @Autowired
     private CountryRepository repository;
 
-    public void save(Country country) {
-        repository.save(country);
+    @Override
+    @Transactional // TODO: 03.07.18 проверить, нужна ли?
+    public Country save(Country country) {
+        return repository.save(country);
     }
 
     public void delete(Country country) {
@@ -28,5 +31,10 @@ public class CountryServiceImpl implements CountryService {
 
     public Country findById(Long id) {
         return repository.findById(id).get();
+    }
+
+    @Override
+    public Country findByCountryName(String countryName) {
+        return repository.findByCountryName(countryName);
     }
 }
