@@ -1,13 +1,17 @@
 package ru.prikhodko.service.impl;
 
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.prikhodko.repository.CityRepository;
 import ru.prikhodko.service.CityService;
 import ru.prikhodko.vo.City;
+import ru.prikhodko.vo.Country;
 
 import java.util.List;
 
+/*@Transactional*/
 @Service("cityService")
 public class CityServiceImpl implements CityService {
 
@@ -26,10 +30,11 @@ public class CityServiceImpl implements CityService {
 
     @Override
     public List<City> findAll() {
-        return (List<City>) repository.findAll();
+        return repository.findAll();
     }
 
     @Override
+    @Transactional
     public City findById(Long id) {
         return repository.findById(id).get();
     }

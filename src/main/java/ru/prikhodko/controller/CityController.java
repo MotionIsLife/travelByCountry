@@ -1,12 +1,15 @@
 package ru.prikhodko.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import ru.prikhodko.service.CityService;
 import ru.prikhodko.service.CountryService;
 import ru.prikhodko.vo.City;
 import ru.prikhodko.vo.Country;
 
+import java.awt.print.Pageable;
 import java.util.List;
 
 @RestController
@@ -36,14 +39,18 @@ public class CityController {
     }
 
     @GetMapping
-    public @ResponseBody List<City> findAll() {
+    public List<City> findAll() {
         System.out.println("find all");
         return cityService.findAll();
     }
 
-    @GetMapping(path = "/{id}")
-    public @ResponseBody City getCity(@PathVariable Long id) {
-        return new City();
+    @GetMapping(path = "/{id}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_JSON_VALUE})
+    public City getCity(@PathVariable(value = "id") Long id) {
+/*        City city = cityService.findById(id);
+        Country country = city.getCountry();*/
+        City result = cityService.findById(id);
+        return result;
+        /*Method threw 'org.hibernate.LazyInitializationException' exception. Cannot evaluate ru.prikhodko.vo.Country_$$_jvst4d4_0.toString()*/
     }
 
     @DeleteMapping(path = "/{id}")

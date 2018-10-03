@@ -1,10 +1,11 @@
 package ru.prikhodko.vo;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "city")
-public class City {
+public class City implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", length = 6, nullable = false)
@@ -14,10 +15,13 @@ public class City {
     private String cityName;
 
     @JoinColumn(name = "country_id")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Country country;
 
     public City() {
+    }
+
+    public City(City city) {
     }
 
     /*public City(long id) {

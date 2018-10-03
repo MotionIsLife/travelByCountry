@@ -18,7 +18,8 @@ public class CountryServiceImpl implements CountryService {
     @Override
     @Transactional // TODO: 03.07.18 проверить, нужна ли?
     public Country save(Country country) {
-        return repository.save(country);
+        Country result = repository.save(country);
+        return result;
     }
 
     public void delete(Country country) {
@@ -26,7 +27,8 @@ public class CountryServiceImpl implements CountryService {
     }
 
     public List<Country> findAll() {
-        return (List<Country>) repository.findAll();
+        List<Country> countries = repository.findAll();
+        return countries;
     }
 
     public Country findById(Long id) {
