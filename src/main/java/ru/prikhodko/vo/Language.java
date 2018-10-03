@@ -3,12 +3,13 @@ package ru.prikhodko.vo;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "language")
+@Table(name = "LANGUAGE")
+@SequenceGenerator(name = "entity_id_gen", sequenceName = "LANGUAGE_SEQ", allocationSize = 1)
 public class Language {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @GeneratedValue(generator = "entity_id_gen", strategy = GenerationType.SEQUENCE)
+    private Integer id;
 
     @Column(name = "language_name")
     private String languageName;
@@ -21,15 +22,15 @@ public class Language {
     public Language() {
     }
 
-    public Language(Long id) {
+    public Language(Integer id) {
         this.id = id;
     }
 
-    public long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

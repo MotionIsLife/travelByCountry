@@ -4,23 +4,23 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "country")
+@Table(name = "COUNTRY")
+@SequenceGenerator(name = "entity_id_gen", sequenceName = "COUNTRY_SEQ", allocationSize = 1)
 public class Country implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", length = 6, nullable = false)
-    private long id;
+    @GeneratedValue(generator = "entity_id_gen", strategy = GenerationType.SEQUENCE)
+    private Integer id;
 
     @Column(name = "country_name", unique = true)
     private String countryName;
 
-    @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "country", cascade = CascadeType.REMOVE) //CascadeType.PERSIST
-    private Set<City> cities;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "country", cascade = CascadeType.ALL) //CascadeType.PERSIST
+    private List<City> cities;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)//ALL поборол ошибку при сохранении языка
     @JoinColumn(name="language_id")
@@ -33,11 +33,11 @@ public class Country implements Serializable {
         this.countryName = countryName;
     }
 
-    public long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -49,11 +49,11 @@ public class Country implements Serializable {
         this.countryName = countryName;
     }
 
-    public Set<City> getCities() {
+    public List<City> getCities() {
         return cities;
     }
 
-    public void setCities(Set<City> cities) {
+    public void setCities(List<City> cities) {
         this.cities = cities;
     }
 

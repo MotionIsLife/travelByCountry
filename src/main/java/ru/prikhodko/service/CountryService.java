@@ -7,7 +7,7 @@ import java.util.List;
 public interface CountryService {
     Country save(Country country);
     void delete(Country country);
-    List<Country> findAll();
-    Country findById(Long id);
+    List<Country> getAll();
+    Country findById(Integer id);
     Country findByCountryName(String countryName);
 }

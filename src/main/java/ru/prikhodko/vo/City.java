@@ -1,43 +1,30 @@
 package ru.prikhodko.vo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "city")
+@Table(name = "CITY")
+@SequenceGenerator(name = "entity_id_gen", sequenceName = "CITY_SEQ", allocationSize = 1)
 public class City implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", length = 6, nullable = false)
-    private long id;
+    @GeneratedValue(generator = "entity_id_gen", strategy = GenerationType.SEQUENCE)
+    private Integer id;
 
     @Column(name = "city_name")
     private String cityName;
 
+    @ManyToOne
     @JoinColumn(name = "country_id")
-    @ManyToOne(fetch = FetchType.EAGER)
     private Country country;
 
-    public City() {
-    }
-
-    public City(City city) {
-    }
-
-    /*public City(long id) {
-        this.id = id;
-    }*/
-
-    public City(String cityName) {
-        /*this.id = id;*/
-        this.cityName = cityName;
-    }
-
-    public long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

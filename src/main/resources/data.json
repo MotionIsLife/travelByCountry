@@ -4,3 +4,23 @@
     "languageName": "English"
   }
 }
+
+{
+  "countryName": "Russia",
+  "cities": [
+    { "cityName": "Rostov" }
+  ],
+  "language":    {
+    "languageName": "Rus"
+  }
+}
+
+{
+  "countryName": "Russia",
+  "cities": [
+
+  ],
+  "language":    {
+    "languageName": "Rus"
+  }
+}

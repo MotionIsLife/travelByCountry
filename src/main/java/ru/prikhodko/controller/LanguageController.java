@@ -12,12 +12,12 @@ public class LanguageController {
     }
 
     @GetMapping(path = "/{id}")
-    public @ResponseBody Language getLanguage(@PathVariable Long id) {
+    public @ResponseBody Language getLanguage(@PathVariable Integer id) {
         return new Language(id);
     }
 
     @DeleteMapping(path = "/{id}")
-    public void deleteLanguage(@PathVariable Long id) {
+    public void deleteLanguage(@PathVariable Integer id) {
         System.out.println("deleted language with id: " + id);
     }
 

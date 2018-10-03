@@ -8,7 +8,7 @@ import ru.prikhodko.vo.Language;
 
 import java.util.List;
 
-@Service("languageService")
+@Service
 public class LanguageServiceImpl implements LanguageService {
 
     @Autowired
@@ -26,7 +26,7 @@ public class LanguageServiceImpl implements LanguageService {
         return (List<Language>) repository.findAll();
     }
 
-    public Language findById(Long id) {
+    public Language findById(Integer id) {
         return repository.findById(id).get();
     }
 }

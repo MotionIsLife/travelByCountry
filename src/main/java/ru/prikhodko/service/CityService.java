@@ -8,5 +8,5 @@ public interface CityService {
     void save(City city);
     void delete(City id);
     List<City> findAll();
-    City findById(Long id);
+    City findById(Integer id);
 }

@@ -22,19 +22,14 @@ public class CityController {
     @Autowired
     private CountryService countryService;
 
-
+    //its work!!!
     @PostMapping
     public void addCity(@RequestBody City city){
         System.out.println("adding city " + city);
-        Country country = countryService.findByCountryName(city.getCountry().getCountryName());
         if(city.getCountry() != null) {
-            if(country != null) {
-                city.setCountry(country);
-            } else {
-                country = countryService.save(new Country(city.getCountry().getCountryName()));
-            }
+            Country country = countryService.findByCountryName(city.getCountry().getCountryName());
+            city.setCountry(country);
         }
-        city.setCountry(country);
         cityService.save(city);
     }
 
@@ -45,7 +40,7 @@ public class CityController {
     }
 
     @GetMapping(path = "/{id}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_JSON_VALUE})
-    public City getCity(@PathVariable(value = "id") Long id) {
+    public City getCity(@PathVariable(value = "id") Integer id) {
 /*        City city = cityService.findById(id);
         Country country = city.getCountry();*/
         City result = cityService.findById(id);
@@ -54,7 +49,7 @@ public class CityController {
     }
 
     @DeleteMapping(path = "/{id}")
-    public void deleteCity(@PathVariable Long id) {
+    public void deleteCity(@PathVariable Integer id) {
         System.out.println("deleted city with id: " + id);
     }
 

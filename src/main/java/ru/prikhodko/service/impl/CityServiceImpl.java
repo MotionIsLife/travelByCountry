@@ -12,7 +12,7 @@ import ru.prikhodko.vo.Country;
 import java.util.List;
 
 /*@Transactional*/
-@Service("cityService")
+@Service
 public class CityServiceImpl implements CityService {
 
     @Autowired
@@ -34,8 +34,7 @@ public class CityServiceImpl implements CityService {
     }
 
     @Override
-    @Transactional
-    public City findById(Long id) {
+    public City findById(Integer id) {
         return repository.findById(id).get();
     }
 }

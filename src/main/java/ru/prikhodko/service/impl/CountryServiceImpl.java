@@ -1,6 +1,7 @@
 package ru.prikhodko.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.prikhodko.repository.CountryRepository;
@@ -9,34 +10,38 @@ import ru.prikhodko.vo.Country;
 
 import java.util.List;
 
-@Service("countryService")
+@Service
+@Transactional
+@Repository
 public class CountryServiceImpl implements CountryService {
 
     @Autowired
-    private CountryRepository repository;
+    private CountryRepository countryRepository;
 
+    @Transactional
     @Override
-    @Transactional // TODO: 03.07.18 проверить, нужна ли?
     public Country save(Country country) {
-        Country result = repository.save(country);
+        Country result = countryRepository.save(country);
         return result;
     }
 
     public void delete(Country country) {
-        repository.delete(country);
+        countryRepository.delete(country);
     }
 
-    public List<Country> findAll() {
-        List<Country> countries = repository.findAll();
+    @Override
+    @Transactional
+    public List<Country> getAll() {
+        List<Country> countries = countryRepository.findAll();
         return countries;
     }
 
-    public Country findById(Long id) {
-        return repository.findById(id).get();
+    public Country findById(Integer id) {
+        return countryRepository.findById(id).get();
     }
 
     @Override
     public Country findByCountryName(String countryName) {
-        return repository.findByCountryName(countryName);
+        return countryRepository.findByCountryName(countryName);
     }
 }
