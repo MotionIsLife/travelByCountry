@@ -20,6 +20,9 @@ public class City implements Serializable {
     @JoinColumn(name = "country_id")
     private Country country;
 
+    public City() {
+    }
+
     public Integer getId() {
         return id;
     }
@@ -44,6 +47,7 @@ public class City implements Serializable {
         this.country = country;
     }
 
+    @Override
     public String toString() {
         return "CityRest{" +
             "id=" + id +

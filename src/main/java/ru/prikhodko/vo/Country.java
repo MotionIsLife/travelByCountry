@@ -19,7 +19,7 @@ public class Country implements Serializable {
     @Column(name = "country_name", unique = true)
     private String countryName;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "country", cascade = CascadeType.ALL) //CascadeType.PERSIST
+    @OneToMany(mappedBy = "country", cascade = CascadeType.ALL) //CascadeType.PERSIST
     private List<City> cities;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)//ALL поборол ошибку при сохранении языка
@@ -57,18 +57,19 @@ public class Country implements Serializable {
         this.cities = cities;
     }
 
-    public Language getLanguage() {
-        return language;
-    }
-
-    public void setLanguage(Language language) {
-        this.language = language;
-    }
-
+    @Override
     public String toString() {
-        return "CountryController{" +
-            "id=" + id +
-            ", countryName='" + countryName + '\'' +
-            '}';
+        StringBuilder result = new StringBuilder(String.format(
+                "Country[id=%d, name='%s']%n",
+                id, countryName));
+        if (cities != null) {
+            for(City city : cities) {
+                result.append(String.format(
+                        "City[id=%d, name='%s']%n",
+                        city.getId(), city.getCityName()));
+            }
+        }
+
+        return result.toString();
     }
 }
