@@ -1,18 +1,16 @@
 package ru.prikhodko.service.impl;
 
-import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import ru.prikhodko.repository.CityRepository;
 import ru.prikhodko.service.CityService;
 import ru.prikhodko.vo.City;
-import ru.prikhodko.vo.Country;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
-/*@Transactional*/
 @Service
+//@Transactional
 public class CityServiceImpl implements CityService {
 
     @Autowired
@@ -28,9 +26,11 @@ public class CityServiceImpl implements CityService {
         repository.delete(city);
     }
 
+//    @Transactional
     @Override
     public List<City> findAll() {
-        return repository.findAll();
+        List<City> all = repository.findAll();
+        return all;
     }
 
     @Override

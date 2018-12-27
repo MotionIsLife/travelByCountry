@@ -1,15 +1,21 @@
 package ru.prikhodko.vo;
 
+
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "COUNTRY")
 @SequenceGenerator(name = "entity_id_gen", sequenceName = "COUNTRY_SEQ", allocationSize = 1)
+//@JsonIgnoreProperties(value= {"cities"})
 public class Country implements Serializable {
 
     @Id
@@ -19,12 +25,8 @@ public class Country implements Serializable {
     @Column(name = "country_name", unique = true)
     private String countryName;
 
-    @OneToMany(mappedBy = "country", cascade = CascadeType.ALL) //CascadeType.PERSIST
-    private List<City> cities;
-
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)//ALL поборол ошибку при сохранении языка
-    @JoinColumn(name="language_id")
-    private Language language;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "country", cascade = CascadeType.REMOVE)
+    private Set<City> cities = new HashSet<>();
 
     public Country() {
     }
@@ -49,11 +51,11 @@ public class Country implements Serializable {
         this.countryName = countryName;
     }
 
-    public List<City> getCities() {
+    public Set<City> getCities() {
         return cities;
     }
 
-    public void setCities(List<City> cities) {
+    public void setCities(Set<City> cities) {
         this.cities = cities;
     }
 

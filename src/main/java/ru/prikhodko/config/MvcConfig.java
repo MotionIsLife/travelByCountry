@@ -14,7 +14,7 @@ import java.util.List;
 
 @EnableWebMvc
 @Configuration
-@ComponentScan(basePackages = {"ru.prikhodko.controller", "ru.prikhodko.service", "ru.prikhodko.repository"})
+@ComponentScan(basePackages = {"ru.prikhodko.controller", "ru.prikhodko.service", "ru.prikhodko.repository", "ru.prikhodko.dao"})
 public class MvcConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {

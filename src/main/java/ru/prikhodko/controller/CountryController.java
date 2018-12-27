@@ -1,12 +1,14 @@
 package ru.prikhodko.controller;
 
+import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-import ru.prikhodko.service.CityService;
+import org.springframework.web.servlet.ModelAndView;
+import ru.prikhodko.dao.CountryDAO;
 import ru.prikhodko.service.CountryService;
-import ru.prikhodko.vo.City;
 import ru.prikhodko.vo.Country;
 
 import java.util.List;
@@ -18,6 +20,9 @@ public class CountryController {
     @Autowired
     private CountryService countryService;
 
+    @Autowired
+    private CountryDAO countriyDAO;
+
     //it's work
     @PostMapping
     public void addCountry(@RequestBody Country country){
@@ -27,8 +32,11 @@ public class CountryController {
     }
 
     @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
+
     public List<Country> getFindAll() {
-        return countryService.getAll();
+//        List<Country> countries = countryService.getAll();
+        List<Country> countries = countriyDAO.findAll();
+        return countries;
     }
 
     @GetMapping(path = "/{id}")

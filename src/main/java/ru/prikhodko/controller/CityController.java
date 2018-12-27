@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import ru.prikhodko.dao.CityDAO;
 import ru.prikhodko.service.CityService;
 import ru.prikhodko.service.CountryService;
 import ru.prikhodko.vo.City;
@@ -22,6 +23,9 @@ public class CityController {
     @Autowired
     private CountryService countryService;
 
+    @Autowired
+    private CityDAO cityDAO;
+
     //its work!!!
     @PostMapping
     public void addCity(@RequestBody City city){
@@ -36,7 +40,8 @@ public class CityController {
     @GetMapping
     public List<City> findAll() {
         System.out.println("find all");
-        return cityService.findAll();
+//        return cityService.findAll();
+        return cityDAO.findAll();
     }
 
     @GetMapping(path = "/{id}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_JSON_VALUE})
