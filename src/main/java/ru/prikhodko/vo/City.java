@@ -1,6 +1,7 @@
 package ru.prikhodko.vo;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -16,7 +17,16 @@ public class City implements Serializable {
     @Column(name = "city_name")
     private String cityName;
 
-    @ManyToOne
+    @Column(name = "hero_city")
+    @Type(type = "org.hibernate.type.NumericBooleanType")
+    private Boolean heroCity;
+
+    @Column(name = "hero_city_new")
+    @Type(type = "ru.prikhodko.type.NumericBooleanTypeNewUserType")
+    private Boolean heroCityNew;
+
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "country_id")
     private Country country;
 
@@ -45,6 +55,22 @@ public class City implements Serializable {
 
     public void setCountry(Country country) {
         this.country = country;
+    }
+
+    public Boolean getHeroCity() {
+        return heroCity;
+    }
+
+    public void setHeroCity(Boolean heroCity) {
+        this.heroCity = heroCity;
+    }
+
+    public Boolean getHeroCityNew() {
+        return heroCityNew;
+    }
+
+    public void setHeroCityNew(Boolean heroCityNew) {
+        this.heroCityNew = heroCityNew;
     }
 
     @Override
