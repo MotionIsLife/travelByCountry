@@ -50,21 +50,15 @@ public class NumericBooleanTypeNewUserType implements UserType {
     @Override
     public void nullSafeSet(PreparedStatement st, Object value, int index,
                             SessionImplementor session)
-            throws HibernateException, SQLException {//прихит флаг
-        //NumericBooleanTypeNew numericBooleanTypeNew = (NumericBooleanTypeNew) value;
-
+            throws HibernateException, SQLException {
         if(value instanceof Boolean) {
-            st.setBoolean(index, (Boolean) value);
+            //st.setBoolean(index, (Boolean) value);
+
+            st.setString(index, (Boolean)value ? "-1" : "0");
         } else {
-            st.setString(index, (String) value);
+            //st.setString(index, (String) value);
+            st.setString(index, "-1");
         }
-        /**
-         * запихнуть в st данные из value (NumericBooleanTypeNew)
-         * st.setTimestamp(index, createdTimestamp);
-         * st.setNull(index, StandardBasicTypes.TIMESTAMP.sqlType());
-         * st.setTimestamp(index + 1, modifiedTimestamp);
-         * st.setNull(index + 1, StandardBasicTypes.TIMESTAMP.sqlType());
-         */
     }
 
     @Override
